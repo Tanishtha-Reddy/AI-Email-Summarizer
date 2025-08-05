@@ -1,35 +1,119 @@
-.sidenav 
+/* Reset default margin and padding for all elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Ensures padding/border don’t increase element size */
+}
+/*:root {
+    --bg-main: #344e41;
+    --sidebar-bg: #a3b18a;
+    --text-main: #333333;
+    --accent-blue: #5D8AA8;
+    --highlight-pink: #FF6F61;
+    --button-teal: #3a5a40;
+    --green: #588157;
+}
+*/
+
+/* Base font and line spacing for the entire HTML document */
+html {
+    font-family: Georgia, 'Times New Roman', Times, serif; 
+    line-height: 1.5; /* Better readability */
+    font-size: 16px; /* Default font size  */
+}
+
+/* Full-height body layout using CSS Grid */
+body {
+    min-height: 100vh;       /* Full viewport height */
+    min-height: 100dvh;      /* Same as above, but safer for mobile browsers */
+    background-color: #3A5A40; /* Page background color */
+    /*color: #000000;*/       /* Default text color (will be overridden in places) */
+
+    /* Two-column layout: content and sidebar */
+    display: grid;
+    grid-template-columns: auto 1fr; /* Sidebar on the left, main content on the right */
+}
+
+/* Sidebar styling */
+#sidebar {
+    height: 100vh;                  /* Full height of the viewport */
+    width: 250px;                   /* Fixed width for sidebar */
+    padding: 5px 1em;               /* Space inside sidebar: top/bottom 5px, sides 1em */
+    background-color: #A3B18A; /* Light background for contrast */
+    border-right: 1px solid #A3B18A;     /* Visual divider */
+    position: sticky;              /* Makes sidebar stick when scrolling */
+    top: 0;                        /* Stick to the top of the page */
+    align-self: start;            /* Ensure it aligns at the top in the grid */
+}
+
+/* Remove bullets from sidebar menu list */
+#sidebar ul {
+    list-style: none;
+}
+#sidebar ul li
 {
-  height: 100%; /* Full-height: remove this if you want "auto" height */
-  width: 160px; /* Set the width of the sidebar */
-  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-  z-index: 1; /* Stay on top */
-  top: 0; /* Stay at the top */
-  left: 0;
-  background-color: #111; /* Black */
-  overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 20px;
+    padding: 1em;
 }
-  .sidenav a
-  {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-}
-.sidenav a:hover
- {
-  color: #1e1919;
+#sidebar a {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;  /* space between icon and text */
+    text-decoration: none;
+    color: inherit;
 }
 
-.main {
-  margin-left: 160px; /* Same as the width of the sidebar */
-  padding: 0px 10px;
+/* First list item in sidebar (often used for logo or title) */
+#sidebar > ul > li:first-child {
+    display: flex;
+    justify-content: flex-end; /* Push content (like a logo) to the right */
+    margin-bottom: 16px;
 }
 
-/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+/* Style for elements inside the sidebar with class "logo" */
+#sidebar .logo {
+    font-weight: 600; /* Make logo text bolder */
+}
+
+/* Highlight active menu item (usually the current page) */
+#sidebar ul li.active a {
+    color: #588157; /* Light text for active link */
+}
+
+/* Color SVG icons inside active links */
+#sidebar ul li.active svg {
+    fill: #DAD7CD;
+}
+
+/* General SVG icon styles inside the sidebar */
+#sidebar svg {
+    flex-shrink: 0; /* Prevent shrinking in flex containers */
+    fill: var(--text-clr, #DAD7CD); /* Use custom color if defined, else black */
+}
+
+/* Background color for text inside <a><span> elements in the sidebar */
+#sidebar a span {
+    background-color: #A3B18A;
+}
+
+/* MAIN CONTENT STYLES */
+
+/* Style all <p> elements inside <main> */
+main p {
+    color: #A3B18A;     /* Unique text color */
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+/* General container style (e.g., content sections) */
+.container {
+    border: 1px solid #3A5A40;      /* Border around container */
+    border-radius: 1em;           /* Rounded corners */
+    margin-bottom: 20px;          /* Space below each container */
+    padding: min(3em, 15%);       /* Responsive padding: 3em or 15% of width */
+
+    /* Add top margin to headings and paragraphs inside containers */
+}
+.container h2,
+.container p {
+    margin-top: 1em;
 }
